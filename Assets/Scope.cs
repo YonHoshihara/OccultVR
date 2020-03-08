@@ -16,8 +16,9 @@ public class Scope : MonoBehaviour
         
         
         Vector3 hand = new Vector3(base_hand.position.x, base_hand.position.y -.8f ,base_hand.position.z);
-        
+        Debug.Log(base_hand.transform.localRotation);
         
         gameObject.transform.position = hand - 1f * base_hand.forward;
+        
     }
 }

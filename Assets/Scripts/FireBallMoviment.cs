@@ -25,10 +25,6 @@ public class FireBallMoviment : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDirection);
     }
      
-    public void Shoot()
-    {
-       
-    }
     void LateUpdate()
     {
         //

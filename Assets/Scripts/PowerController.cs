@@ -33,9 +33,9 @@ public class PowerController : MonoBehaviour
                 if (currentGesture == "CLOSE")
                 {
                   //  Debug.Log("Starting Magic");
-                    sound.playRoarSound(false);
-                    StartCoroutine(StartMagic());
-                    hand_magic_atack.SetActive(true);
+                    //sound.playRoarSound(false);
+                   // StartCoroutine(StartMagic());
+                    //hand_magic_atack.SetActive(true);
                     yield return new WaitForSeconds(5f);
                     hand_magic_atack.SetActive(false);
                     StopCoroutine(StartMagic());
