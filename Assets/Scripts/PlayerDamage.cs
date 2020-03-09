@@ -8,7 +8,7 @@ public class PlayerDamage : MonoBehaviour
 {
     // Start is called before the first frame update
     public string monster_tag; 
-    public int playerLife;
+    public float playerLife;
     public GameObject damage_feedback;
     public GameObject gameOver;
     public GolenSoundController sound;
@@ -32,16 +32,12 @@ public class PlayerDamage : MonoBehaviour
     {
         if (other.gameObject.tag == monster_tag)
         {
-            //  yield return new WaitForSeconds(5f);
-
-            
+        
             playerLife--;
             sound.playDamageSound(false);
             damage_feedback.SetActive(true);
             yield return new WaitForSeconds(1f);
             damage_feedback.SetActive(false);
-           // Debug.Log("Getting Damage");
-           // Debug.Log(playerLife);
             if (playerLife < 0)
             {
                 Thread ts = sk.mThread;
@@ -62,5 +58,17 @@ public class PlayerDamage : MonoBehaviour
         yield return new WaitForSeconds(.2f);
     }
 
+    IEnumerator set_damage_feedback()
+    {
+        damage_feedback.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        damage_feedback.SetActive(false);
+        yield  break;
+    }
+    public void player_receive_damage(float damage)
+    {
+        playerLife = playerLife - damage;
+        StartCoroutine(set_damage_feedback());
+    }
     
 }

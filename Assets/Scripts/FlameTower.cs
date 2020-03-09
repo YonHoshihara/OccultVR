@@ -9,12 +9,7 @@ public class FlameTower : MonoBehaviour
     public Transform rightPalm;
     private Vector3 direction;
     private Vector3 rotationDirection;
-    void Start()
-    {
-       
-    }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         direction = scopeAtack.position - rightPalm.position;
