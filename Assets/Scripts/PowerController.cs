@@ -14,41 +14,30 @@ public class PowerController : MonoBehaviour
     public GameObject hand_magic_defense;
     public GameObject right_scope;
     private GolenSoundController sound;
-    private PlayerDamage player;
-    public PlayerDamage damage;
+    public PlayerController playerController;
+   
     IEnumerator Start()
     {
        
         atk_scope_anim = GetComponent<Animation>();
         sound = GetComponent<GolenSoundController>();
-        player = GameObject.FindGameObjectWithTag("player_damage").GetComponent<PlayerDamage>();
 
         while (true)
         {
            
                 if (currentGesture == "CLOSE")
                 {
-                  //  Debug.Log("Starting Magic");
-                    sound.playRoarSound(false);
+                //  Debug.Log("Starting Magic");
+                // sound.playRoarSound(false);
+                    sound.playAtackSound(false);
                     StartCoroutine(StartMagic());
                     hand_magic_atack.SetActive(true);
                     yield return new WaitForSeconds(3f);
                     hand_magic_atack.SetActive(false);
                     StopCoroutine(StartMagic());
-                    sound.stopRoarSound(false);
+                    //sound.stopRoarSound(false);
                 }
-                /*
-                 if (currentGesture == "THUMB")
-                 {
-                     Debug.Log("Starting Defense");
-                     hand_magic_defense.SetActive(true);
-                     StartCoroutine(StartDefense());
-                     yield return new WaitForSeconds(5f);
-                     hand_magic_defense.SetActive(false);
-                     StopCoroutine(StartDefense());
-                     Debug.Log("Ending_Defense");
-                 }
-                 */
+                
                 stateMachine = currentGesture;
                 yield return new WaitForSeconds(.2F);
             
@@ -66,18 +55,19 @@ public class PowerController : MonoBehaviour
                     if (!fire.activeInHierarchy)
                     {
                         hand_magic_atack.SetActive(false);
-                        sound.stopRoarSound(false);
-                        sound.playAtackSound(false);
+                        sound.stopAtackSound(false);
+                        sound.playRoarSound(true);
                         fire.SetActive(true);
-                        damage.player_receive_damage(0.1f);
+                        playerController.player_receive_damage(0.5f);
                     }
                    
                 }
 
                 if ((secont_gesture != "OPEN") && fire.activeInHierarchy)
                 {
+                    sound.stopRoarSound(false);
                     fire.SetActive(false);
-                    StopCoroutine(StartMagic());
+                    yield break;
                 }
 
                 yield return new WaitForSeconds(.1f);

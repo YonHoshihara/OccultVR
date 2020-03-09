@@ -8,18 +8,14 @@ public class PlayerDamage : MonoBehaviour
 {
     // Start is called before the first frame update
     public string monster_tag; 
-    public float playerLife;
     public GameObject damage_feedback;
     public GameObject gameOver;
     public GolenSoundController sound;
-    public bool is_dead;
-    public Rigidbody leap_rig;
-    public Socket sk;
+    public PlayerController playercontroler;
+
     void Start()
     {
-        is_dead = false;
-        sound = GetComponent<GolenSoundController>();
-        leap_rig = GameObject.FindGameObjectWithTag("leap_rig").GetComponent<Rigidbody>();
+     
     }
 
     // Update is called once per frame
@@ -28,47 +24,17 @@ public class PlayerDamage : MonoBehaviour
         
     }
 
-    private IEnumerator OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == monster_tag)
-        {
-        
-            playerLife--;
+        {  
             sound.playDamageSound(false);
-            damage_feedback.SetActive(true);
-            yield return new WaitForSeconds(1f);
-            damage_feedback.SetActive(false);
-            if (playerLife < 0)
-            {
-                Thread ts = sk.mThread;
-                ts.Abort();
-                is_dead = true;
-                gameOver.SetActive(true);
-                damage_feedback.SetActive(true);
-                leap_rig.useGravity = true;
-                yield return new WaitForSeconds(5f);
-                gameOver.SetActive(false);
-                damage_feedback.SetActive(false);
-                is_dead = false;
-                leap_rig.useGravity = false;
-                SceneManager.LoadScene("Menu");
-            }
-
-        }
-        yield return new WaitForSeconds(.2f);
+            playercontroler.player_receive_damage(.5f);
+        }  
     }
-
-    IEnumerator set_damage_feedback()
+    public void damage_sound()
     {
-        damage_feedback.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        damage_feedback.SetActive(false);
-        yield  break;
+        sound.playDamageSound(false);
     }
-    public void player_receive_damage(float damage)
-    {
-        playerLife = playerLife - damage;
-        StartCoroutine(set_damage_feedback());
-    }
-    
+  
 }
