@@ -11,10 +11,6 @@ public class GolenSoundController : MonoBehaviour
     public AudioClip die;
     public AudioClip walk;
     public AudioSource audio;
-    void Start()
-    {
-       // audio = gameObject.GetComponent<AudioSource>();
-    }
 
     // Update is called once per frame
     private void playSound(AudioClip sound, bool loop)

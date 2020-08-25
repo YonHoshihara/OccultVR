@@ -25,8 +25,6 @@ public PowerController powerController;
     string dataReceived = " ";
 
     public void LateUpdate(){
-    	//textMesh.text = dataReceived;
-
 	    powerController.currentGesture = dataReceived;
     }
 
@@ -35,8 +33,7 @@ public PowerController powerController;
         ThreadStart ts = new ThreadStart(GetInfo);
         mThread = new Thread(ts);
         mThread.Start();
-        
-        Start_Python("C:/start_pyton.bat");
+        //Start_Python("C:/start_pyton.bat");
     }
 
     public static string GetLocalIPAddress()
@@ -75,23 +72,14 @@ public PowerController powerController;
        	//envia input
 		byte[] message = System.Text.Encoding.ASCII.GetBytes(currentInput);
 		nwStream.Write(message, 0, message.Length);
-
-        //recebe resultado
-      
         byte[] buffer = new byte[client.ReceiveBufferSize];
-        //Debug.Log(buffer.Length);
-        //Debug.Log(client.ReceiveBufferSize);
-        int bytesRead = nwStream.Read(buffer, 0, buffer.Length);
-        
+        int bytesRead = nwStream.Read(buffer, 0, buffer.Length);  
         dataReceived = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-       // Debug.Log("DataReceived");
-        // print(dataReceived);
-     
-	   
     }
-   
+
     void Start_Python(string path)
     {
+        print(path);
         Process.Start(path);
     }
     

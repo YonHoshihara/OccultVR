@@ -58,12 +58,12 @@ public class PowerController : MonoBehaviour
                         sound.stopAtackSound(false);
                         sound.playRoarSound(true);
                         fire.SetActive(true);
-                        playerController.player_receive_damage(0.5f);
+                        //playerController.player_receive_damage(0.5f);
                     }
                    
                 }
 
-                if ((secont_gesture != "OPEN") && fire.activeInHierarchy)
+                if ((secont_gesture == "CLOSE") && fire.activeInHierarchy)
                 {
                     sound.stopRoarSound(false);
                     fire.SetActive(false);
