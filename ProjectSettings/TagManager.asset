@@ -11,8 +11,9 @@ TagManager:
   - player_damage
   - leap_rig
   - Fire
-  - scope_atack
   - right_palm
+  - scope
+  - meteor
   layers:
   - Default
   - TransparentFX

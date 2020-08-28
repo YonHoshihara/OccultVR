@@ -77,9 +77,4 @@ public class GolenSoundController : MonoBehaviour
     {
         stopSound(atack,loop);
     }
-
-    void Update()
-    {
-        
-    }
 }

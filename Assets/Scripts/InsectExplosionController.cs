@@ -21,7 +21,7 @@ public class InsectExplosionController : MonoBehaviour
                     yield return new WaitForSeconds(animationController.getAnimationTime());
                     explosionObject.SetActive(true);
                     yield return new WaitForSeconds(explosionTime);
-                    damageController.life = 0;
+                    damageController.setDamage(damageController.life);
                     explosionObject.SetActive(false);
                 }
             }

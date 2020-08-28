@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class DamageController : MonoBehaviour
@@ -9,31 +10,26 @@ public class DamageController : MonoBehaviour
     public int life;
     public bool recievedDamage;
     public bool die;
-    IEnumerator Start()
+    private IEnumerator damageCourotine;
+    void Start()
     {
         recievedDamage = false;
         die = false;
-
-        while (true)
-        {
-            if (life <= 0)
-            {
-                die = true;
-            }
-
-            if (Input.GetKeyDown("l"))
-            {
-                StartCoroutine(setDamage(1));
-            }
-
-            yield return new WaitForSeconds(.01f);
-        }
     }
-    public IEnumerator setDamage(int damage)
+    private IEnumerator Damage(int damage)
     {
         recievedDamage = true;
-        life--;
+        life -= damage;
+        if (life <= 0)
+        {
+            die = true;
+        }
         yield return new WaitForSeconds(.01f);
         recievedDamage = false;
+    }
+    public void setDamage(int damage)
+    {
+        damageCourotine = Damage(damage);
+        StartCoroutine(damageCourotine);
     }
 }

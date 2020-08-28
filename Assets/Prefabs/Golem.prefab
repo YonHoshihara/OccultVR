@@ -170,8 +170,10 @@ GameObject:
   - component: {fileID: 2410771461804114282}
   - component: {fileID: 2410771461982753486}
   - component: {fileID: 2410771461804114283}
-  - component: {fileID: 2410771461804114280}
   - component: {fileID: 2410771461804114064}
+  - component: {fileID: 8199254194736112272}
+  - component: {fileID: 431792786230340821}
+  - component: {fileID: 2410771461804114280}
   m_Layer: 0
   m_Name: Golem
   m_TagString: enemy
@@ -313,10 +315,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   agent: {fileID: 2410771461804114285}
-  target: {fileID: 0}
   anim: {fileID: 2410771461804114286}
   animationController: {fileID: 2410771461982753486}
   damageController: {fileID: 2410771461804114282}
+--- !u!114 &2410771461804114064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410771461804114281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebba054e33620a04da0a15b034da0b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 5
+  damageController: {fileID: 2410771461804114282}
+--- !u!114 &8199254194736112272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410771461804114281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e687484dfc4e8fc47b1e678bbb1245b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageController: {fileID: 2410771461804114282}
+  atackTag: fireball
+  damage: 1
+--- !u!114 &431792786230340821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410771461804114281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e687484dfc4e8fc47b1e678bbb1245b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageController: {fileID: 2410771461804114282}
+  atackTag: meteor
+  damage: 2
 --- !u!82 &2410771461804114280
 AudioSource:
   m_ObjectHideFlags: 0
@@ -413,20 +458,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2410771461804114064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2410771461804114281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebba054e33620a04da0a15b034da0b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTime: 5
-  damageController: {fileID: 2410771461804114282}
 --- !u!1 &2410771461966620785
 GameObject:
   m_ObjectHideFlags: 0

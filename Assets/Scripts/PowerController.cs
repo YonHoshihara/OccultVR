@@ -4,82 +4,57 @@ using UnityEngine;
 
 public class PowerController : MonoBehaviour
 {
- 
     public string currentGesture = " ";
     string lastGesture;
     string stateMachine = "";
-    public GameObject fire;
-    private Animation atk_scope_anim;
+    public GameObject meteor;
+    public GameObject fireball;
+    public GameObject firestormCollider;
     public GameObject hand_magic_atack;
-    public GameObject hand_magic_defense;
     public GameObject right_scope;
     private GolenSoundController sound;
     public PlayerController playerController;
-   
+
     IEnumerator Start()
     {
-       
-        atk_scope_anim = GetComponent<Animation>();
         sound = GetComponent<GolenSoundController>();
-
         while (true)
         {
-           
                 if (currentGesture == "CLOSE")
                 {
-                //  Debug.Log("Starting Magic");
-                // sound.playRoarSound(false);
                     sound.playAtackSound(false);
                     StartCoroutine(StartMagic());
                     hand_magic_atack.SetActive(true);
-                    yield return new WaitForSeconds(3f);
+                    yield return new WaitForSeconds(5f);
                     hand_magic_atack.SetActive(false);
                     StopCoroutine(StartMagic());
-                    //sound.stopRoarSound(false);
                 }
-                
                 stateMachine = currentGesture;
-                yield return new WaitForSeconds(.2F);
-            
-          
+                yield return new WaitForSeconds(.02F);
         }
         IEnumerator StartMagic()
         {
             while (true)
             {
-
-
                 string secont_gesture = currentGesture;
-                if (secont_gesture == "OPEN")
+                if ((secont_gesture == "OPEN")||(secont_gesture == "FIRE")||(secont_gesture == "TWO") ||(secont_gesture == "THREE"))
                 {
-                    if (!fire.activeInHierarchy)
-                    {
-                        hand_magic_atack.SetActive(false);
-                        sound.stopAtackSound(false);
-                        sound.playRoarSound(true);
-                        fire.SetActive(true);
-                        //playerController.player_receive_damage(0.5f);
-                    }
-                   
+                    Instantiate_Prefab(fireball, right_scope.transform.position);
+                    break;
                 }
-
-                if ((secont_gesture == "CLOSE") && fire.activeInHierarchy)
+                if (secont_gesture == "LOVE")
                 {
-                    sound.stopRoarSound(false);
-                    fire.SetActive(false);
-                    yield break;
+                    meteor.SetActive(true);
+                    yield return new WaitForSeconds(.5f);
+                    firestormCollider.SetActive(true);
+                    yield return new WaitForSeconds(2f);
+                    firestormCollider.SetActive(true);
+                    meteor.SetActive(false);
                 }
-
-                yield return new WaitForSeconds(.1f);
+                yield return new WaitForSeconds(.01f);
             }
-
         }
-
-
-
-
     }
-
     void Instantiate_Prefab(GameObject obj, Vector3 instantate_positon)
     {
         Instantiate(obj, instantate_positon, Quaternion.identity);

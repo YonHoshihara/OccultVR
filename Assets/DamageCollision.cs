@@ -8,7 +8,6 @@ public class DamageCollision : MonoBehaviour
     public  string power_tag;
     Animator anim;
     public int life;
-    private Golen_atack golen_atack;
     bool is_alive;
     private GolenSoundController sound;
     IEnumerator Start()
@@ -16,13 +15,12 @@ public class DamageCollision : MonoBehaviour
 
         sound = GetComponent<GolenSoundController>();
         anim = gameObject.GetComponent<Animator>();
-        golen_atack = GetComponent<Golen_atack>();
         sound.playRoarSound(false);
         yield return new WaitForSeconds(2f);
         anim.SetTrigger("Walk");
         sound.playWalkSound(true);
         is_alive = true;
-        GetComponent<GolenMoviment>().enabled = true;
+       
     }
 
     // Update is called once per frame
@@ -40,14 +38,14 @@ public class DamageCollision : MonoBehaviour
             {
 
                 GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
-                GetComponent<GolenMoviment>().enabled = false;
+            
                 sound.playDieSound(false);
                 anim.SetTrigger("Die");
                 yield return new WaitForSeconds(10f);
                 Destroy(gameObject);
             }
 
-           bool is_atack = golen_atack.is_atack;
+            bool is_atack = true;
            if (is_atack)
             {
                 sound.playDamageSound(false);
@@ -61,10 +59,10 @@ public class DamageCollision : MonoBehaviour
                 GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                 sound.playDamageSound(false);
                 anim.SetTrigger("Damage");
-                GetComponent<GolenMoviment>().enabled = false;
+
                 yield return new WaitForSeconds(1f);
                 anim.SetTrigger("Walk");
-                GetComponent<GolenMoviment>().enabled = true;
+               
                 sound.playWalkSound(true);
             }
 
@@ -83,8 +81,8 @@ public class DamageCollision : MonoBehaviour
                     if (life == 0)
                     {
                         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                        GetComponent<GolenMoviment>().enabled = false;              
-                        golen_atack.is_atack = false;
+                              
+                        
                         //yield return new WaitForSeconds(.5f);
                         GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 250));
                         yield return new WaitForSeconds(.5f);
@@ -102,15 +100,13 @@ public class DamageCollision : MonoBehaviour
                         if (life > 0)
                         {
                            
-                            GetComponent<GolenMoviment>().enabled = false;
-                            golen_atack.is_atack = false;
                             sound.playDamageSound(false);
                             anim.SetTrigger("Damage");
                             GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 250));
                             yield return new WaitForSeconds(1f);
                             anim.SetTrigger("Walk");
                             GetComponent<Rigidbody>().velocity = (new Vector3(0, 0, 0));
-                            GetComponent<GolenMoviment>().enabled = true;
+                            
                         }
                         
                     }
