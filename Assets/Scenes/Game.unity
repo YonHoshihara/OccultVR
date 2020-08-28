@@ -2155,7 +2155,7 @@ PrefabInstance:
     - target: {fileID: 2410771461804114281, guid: 775df7e106583f448904f7dc6e4981d7,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2410771461804114282, guid: 775df7e106583f448904f7dc6e4981d7,
         type: 3}
@@ -2385,6 +2385,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3064383210242908746, guid: 13f369efe36b9564f865221343796c91,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3064383210297869040, guid: 13f369efe36b9564f865221343796c91,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -2455,10 +2460,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3427397970435612282, guid: 13f369efe36b9564f865221343796c91,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3623727720281402257, guid: 13f369efe36b9564f865221343796c91,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4136645520271287583, guid: 13f369efe36b9564f865221343796c91,
         type: 3}
@@ -2568,7 +2578,7 @@ PrefabInstance:
     - target: {fileID: 6108652689787877754, guid: 13f369efe36b9564f865221343796c91,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6520875329252279067, guid: 13f369efe36b9564f865221343796c91,
         type: 3}
@@ -2637,6 +2647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5065423310253399539, guid: 13f369efe36b9564f865221343796c91, type: 3}
+    - {fileID: 3225157973408149981, guid: 13f369efe36b9564f865221343796c91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 13f369efe36b9564f865221343796c91, type: 3}
 --- !u!1001 &7774576580416106419
 PrefabInstance:

@@ -13,21 +13,11 @@ public class PlayerDamage : MonoBehaviour
     public GolenSoundController sound;
     public PlayerController playercontroler;
 
-    void Start()
-    {
-     
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == monster_tag)
-        {  
+        {
+            Debug.Log("PLayer Damage");
             sound.playDamageSound(false);
             playercontroler.player_receive_damage(.5f);
         }  

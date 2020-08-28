@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     {
         while (true)
         {
-            if (player.playerLife < 0)
+            if (player.playerLife <= 0)
             {
                 gameOver();
                 yield break;
