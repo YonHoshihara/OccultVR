@@ -8,9 +8,9 @@ using System.Threading;
 using UnityEngine.UI;
 using System;
 using System.Diagnostics;
-
-using System.ComponentModel;
-public class Socket : MonoBehaviour {
+public class SocketMenu : MonoBehaviour
+{
+    // Start is called before the first frame update
     public Thread mThread;
     public string connectionIP = "127.0.0.1";
     public int connectionPort = 10000;
@@ -18,14 +18,15 @@ public class Socket : MonoBehaviour {
     TcpListener listener;
     public string currentInput;
     TcpClient client;
-    public TextMesh textMesh; 
-    public PowerController powerController;
+    public TextMesh textMesh;
+    public SceneTransitionController sceneTransitionController;
     bool running;
     Text textResult;
     string dataReceived = " ";
 
-    public void LateUpdate(){
-	    powerController.currentGesture = dataReceived;
+    public void LateUpdate()
+    {
+        sceneTransitionController.currentGesture = dataReceived;
     }
 
     private void Start()
@@ -51,12 +52,13 @@ public class Socket : MonoBehaviour {
 
     void GetInfo()
     {
+      
         localAdd = IPAddress.Parse(connectionIP);
         listener = new TcpListener(IPAddress.Any, connectionPort);
         listener.Start();
-       
+
         client = listener.AcceptTcpClient();
-        
+
         running = true;
         while (running)
         {
@@ -68,23 +70,18 @@ public class Socket : MonoBehaviour {
     void Connection()
     {
         NetworkStream nwStream = client.GetStream();
-       
-       	//envia input
-		byte[] message = System.Text.Encoding.ASCII.GetBytes(currentInput);
-		nwStream.Write(message, 0, message.Length);
-        byte[] buffer = new byte[client.ReceiveBufferSize];
-        int bytesRead = nwStream.Read(buffer, 0, buffer.Length);  
-        dataReceived = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-    }
 
-    public void StopGestureDetection()
-    {
-        listener.Stop();
-        mThread.Abort();
+        //envia input
+        byte[] message = System.Text.Encoding.ASCII.GetBytes(currentInput);
+        nwStream.Write(message, 0, message.Length);
+        byte[] buffer = new byte[client.ReceiveBufferSize];
+        int bytesRead = nwStream.Read(buffer, 0, buffer.Length);
+        dataReceived = Encoding.UTF8.GetString(buffer, 0, bytesRead);
     }
     void Start_Python(string path)
     {
         print(path);
         Process.Start(path);
     }
+
 }

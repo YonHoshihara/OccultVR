@@ -23,19 +23,18 @@ public class GameController : MonoBehaviour
             }
             yield return new WaitForSeconds(.1f);
         }
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private IEnumerator game_over()
     {
-        Thread ts = sk.mThread;
-        ts.Abort();
+        sk.StopGestureDetection();
         game_over_feedback.SetActive(true);
         damage_feedback.SetActive(true);
         leap_rig.useGravity = true;
@@ -46,8 +45,7 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("Menu");
         yield break;
     }
-
-    private void gameOver()
+      private void gameOver()
     {
         StartCoroutine(game_over());
     }

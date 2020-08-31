@@ -9,6 +9,7 @@ public class InsectExplosionController : MonoBehaviour
     public DamageController damageController;
     public MonsterAnimationController animationController;
     public NavMeshAgent agent;
+    public GolenSoundController sound;
     public float explosionTime;
     IEnumerator Start()
     {
@@ -20,6 +21,7 @@ public class InsectExplosionController : MonoBehaviour
                 {
                     yield return new WaitForSeconds(animationController.getAnimationTime());
                     explosionObject.SetActive(true);
+                    sound.playAtackSound(false);
                     yield return new WaitForSeconds(explosionTime);
                     damageController.setDamage(damageController.life);
                     explosionObject.SetActive(false);

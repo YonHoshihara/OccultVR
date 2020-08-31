@@ -17,7 +17,6 @@ public class PlayerDamage : MonoBehaviour
     {
         if (other.gameObject.tag == monster_tag)
         {
-            Debug.Log("PLayer Damage");
             sound.playDamageSound(false);
             playercontroler.player_receive_damage(.5f);
         }  
@@ -26,5 +25,4 @@ public class PlayerDamage : MonoBehaviour
     {
         sound.playDamageSound(false);
     }
-  
 }

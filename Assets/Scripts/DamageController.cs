@@ -10,9 +10,11 @@ public class DamageController : MonoBehaviour
     public int life;
     public bool recievedDamage;
     public bool die;
+    private SphereCollider collider;
     private IEnumerator damageCourotine;
     void Start()
     {
+        collider = GetComponent<SphereCollider>();
         recievedDamage = false;
         die = false;
     }
@@ -22,6 +24,7 @@ public class DamageController : MonoBehaviour
         life -= damage;
         if (life <= 0)
         {
+            collider.isTrigger = false; 
             die = true;
         }
         yield return new WaitForSeconds(.01f);

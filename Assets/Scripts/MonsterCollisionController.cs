@@ -9,10 +9,12 @@ public class MonsterCollisionController : MonoBehaviour
     public DamageController damageController;
     public string atackTag;
     public int damage;
+    public GolenSoundController sound;
     private IEnumerator OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == atackTag)
         {
+            sound.playDamageSound(false);
             damageController.setDamage(damage);
             yield return new WaitForSeconds(.2f);
         }

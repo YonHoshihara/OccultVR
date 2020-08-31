@@ -16,6 +16,7 @@ public class SendCurrentGesture : MonoBehaviour {
     public Transform rightPalm;
     public Transform[] fingers;
     Socket socket;
+    SocketMenu socketMenu;
     public float THUMB_INDEX_ANGLE;
 
      void OnGUI()
@@ -26,6 +27,10 @@ public class SendCurrentGesture : MonoBehaviour {
     IEnumerator Start ()
     {
         socket = GetComponent<Socket>();
+        if (!socket)
+        {
+            socketMenu = GetComponent<SocketMenu>();
+        }
         while (true)
         {
 
@@ -108,7 +113,15 @@ public class SendCurrentGesture : MonoBehaviour {
                
 
                 rawDataTemp = rawDataTemp.Substring(0, rawDataTemp.Length - 1);
-                socket.currentInput = rawDataTemp;
+                
+                if (socket)
+                {
+                    socket.currentInput = rawDataTemp;
+                }
+                else
+                {
+                    socketMenu.currentInput = rawDataTemp;
+                }
                 //Debug.Log(rawDataTemp);
             }
 

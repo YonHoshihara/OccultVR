@@ -9700,6 +9700,7 @@ GameObject:
   - component: {fileID: 2535820452257961650}
   - component: {fileID: 1560851195659273362}
   - component: {fileID: 4126580445326643101}
+  - component: {fileID: 1678095831333047072}
   m_Layer: 0
   m_Name: BombInsect
   m_TagString: enemy
@@ -9715,8 +9716,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2535820452257961609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5148, y: 0.06, z: 16.092}
-  m_LocalScale: {x: 0.64586, y: 0.64586, z: 0.64586}
+  m_LocalPosition: {x: -6.5148, y: -0.11419, z: 16.031}
+  m_LocalScale: {x: 0.8511789, y: 0.8511789, z: 0.8511789}
   m_Children:
   - {fileID: 2535820453368831085}
   - {fileID: 2535820452953366202}
@@ -9783,11 +9784,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2535820452257961609}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.79469305
-  m_Center: {x: -0.013241929, y: 0.90453595, z: 0.49999997}
+  m_Radius: 0.97636664
+  m_Center: {x: -0.013241929, y: 0.90453595, z: 0.6816735}
 --- !u!195 &2535820452257961615
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9954,7 +9955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee043cf9f4bd8b04dba8f295546acb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5
+  life: 1
   recievedDamage: 0
   die: 0
 --- !u!114 &2535820452257961611
@@ -9973,6 +9974,7 @@ MonoBehaviour:
   damageController: {fileID: 2535820452257961610}
   animationController: {fileID: 2535820452257961613}
   agent: {fileID: 2535820452257961615}
+  sound: {fileID: 1678095831333047072}
   explosionTime: 0.5
 --- !u!114 &2535820452257961650
 MonoBehaviour:
@@ -10001,8 +10003,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageController: {fileID: 2535820452257961610}
-  atackTag: freball
+  atackTag: fireball
   damage: 1
+  sound: {fileID: 1678095831333047072}
 --- !u!114 &4126580445326643101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10018,6 +10021,25 @@ MonoBehaviour:
   damageController: {fileID: 2535820452257961610}
   atackTag: meteor
   damage: 2
+  sound: {fileID: 1678095831333047072}
+--- !u!114 &1678095831333047072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535820452257961609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b358cae42383af40bdace1470359d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: {fileID: 8300000, guid: 0bcd88c342a455c40bb10b0dbc611939, type: 3}
+  atack: {fileID: 8300000, guid: 0bcd88c342a455c40bb10b0dbc611939, type: 3}
+  roar: {fileID: 8300000, guid: 0bcd88c342a455c40bb10b0dbc611939, type: 3}
+  die: {fileID: 8300000, guid: 0bcd88c342a455c40bb10b0dbc611939, type: 3}
+  walk: {fileID: 8300000, guid: 0bcd88c342a455c40bb10b0dbc611939, type: 3}
+  audio: {fileID: 2535820452257961614}
 --- !u!1 &2535820452306150926
 GameObject:
   m_ObjectHideFlags: 0
