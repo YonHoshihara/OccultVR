@@ -30,10 +30,15 @@ public class Socket : MonoBehaviour {
 
     private void Start()
     {
+       
         ThreadStart ts = new ThreadStart(GetInfo);
         mThread = new Thread(ts);
         mThread.Start();
-        //Start_Python("C:/start_pyton.bat");
+        string st_1 = Application.dataPath;
+        string st_2 = "/start_pyton.bat.bat";
+        string path = st_1 + st_2;
+        Start_Python(path);
+        
     }
 
     public static string GetLocalIPAddress()
@@ -84,7 +89,6 @@ public class Socket : MonoBehaviour {
     }
     void Start_Python(string path)
     {
-        print(path);
         Process.Start(path);
     }
 }

@@ -26,6 +26,7 @@ public class SendCurrentGesture : MonoBehaviour {
 
     IEnumerator Start ()
     {
+        Debug.Log(Application.dataPath);
         socket = GetComponent<Socket>();
         if (!socket)
         {
